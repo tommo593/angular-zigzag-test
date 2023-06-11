@@ -1,20 +1,22 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BreedService {
-  private apiUrl = 'https://dog.ceo/api/breeds/list/all';
+  private apiUrl = 'https://api.thedogapi.com';
 
   constructor(private http: HttpClient) {}
 
   getBreeds(): Observable<any> {
-    return this.http.get<any>(this.apiUrl);
+    const headers = new HttpHeaders().set('x-api-key', 'live_nFbyI4sWStUbleuw6RnZ9kVcWEtlMZB4j0rlhZqBg7XV66JgQTtm3jTwytg3fzl7');
+    return this.http.get<any>(this.apiUrl, { headers });
   }
 
   getBreedById(id: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${id}`);
+    const headers = new HttpHeaders().set('x-api-key', 'live_nFbyI4sWStUbleuw6RnZ9kVcWEtlMZB4j0rlhZqBg7XV66JgQTtm3jTwytg3fzl7');
+    return this.http.get<any>(`${this.apiUrl}/${id}`, { headers });
   }
-}
+};
