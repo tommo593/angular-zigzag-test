@@ -1,0 +1,6 @@
+<h2>Dog Breeds</h2>
+<ul>
+  <li *ngFor="let breed of breeds">
+    <a routerLink="/breeds/{{ breed.id }}">{{ breed.name }}</a>
+  </li>
+</ul>
